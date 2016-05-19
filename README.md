@@ -5,9 +5,13 @@
 For Apache >= 2.4 on recent releases of Ubuntu (16.04 in particular), there
 are essentially three steps to setting up a virtual host:
 	
-	1. Create a .conf file /etc/apache2/sites-available/${YOUR_WEBSITE_NAME}.conf,
-	   the contents of should be: 
-
+	1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
+		Here's the easiest way to do this:
+	        1. `Ctrl + Alt + t` (to open up a terminal)
+	        2. `sudo cp /etc/apache2/sites-available/default-000.conf /etc/apache2/sites-available/zf2.project.conf`
+	2. Edit the `apache ServerName` and `apache DocumentRoot` your newly created `zf2.project.conf`.
+	        Here's the easiest way to do this:
+		1. 
 	<VirtualHost *:80>
 			ServerName  zf2.project.localhost
 			ServerAdmin webmaster@localhost
