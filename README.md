@@ -9,7 +9,6 @@ are essentially three steps to setting up a virtual host:
    Here's the easiest way to do this:
    1. Ctrl + Alt + t (to open up a terminal)
    2. sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/zf2.project.conf
-
 2. Edit the `ServerName` and `DocumentRoot` in your newly created `zf2.project.conf`
    changing them to: 
 ```apache 
@@ -55,9 +54,7 @@ are essentially three steps to setting up a virtual host:
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 ```
-
-3. Edit the `<Directory /var/www/>` directive in /etc/apache2/apache.conf 
-   from `AllowOverride None` to `AllowOverride All`.
+3. Edit the `<Directory /var/www/>` directive in /etc/apache2/apache.conf from `AllowOverride None` to `AllowOverride All`.
    Here's the easiest way to do this:
    1. sudo nano /etc/apache2/apache2.conf
    2. page down until you see `<Directory /var/www/>`
