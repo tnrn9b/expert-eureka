@@ -1,5 +1,5 @@
 # expert-eureka
-### PHP Apache2 Modules
+## PHP Apache2 Modules
 Make sure you known which version of php you have installed, and that the necessary apache modules are enabled.
 To check your php version enter `php -v` at the command-line. The output should resimble this:
 ```sh
@@ -25,7 +25,7 @@ enter `ls -l | grep php`. If the mods are available, the output should look like
 Endable the module by entering `sudo a2enmod php7.0` (you need to type the appropriate number for your version) and
 restart apache by entering `sudo service apache2 restart`.
 
-### Apache setup
+## Apache setup
 
 For Apache >= 2.4 on recent releases of Ubuntu (16.04 in particular), there are essentially three steps to setting up a virtual host:
 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
@@ -35,7 +35,7 @@ For Apache >= 2.4 on recent releases of Ubuntu (16.04 in particular), there are 
 5. Edit the file /etc/hosts to include your the address `127.0.0.1` and your`ServerName`.
 6. Enable the virtual host configuration `sudo a2ensite zf2.project.conf` and `sudo service apache2 restart`.
 
-## Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
+### Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
    Here's the easiest way to do this:
    1. Ctrl + Alt + t (to open up a terminal)
    2. sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/zf2.project.conf
