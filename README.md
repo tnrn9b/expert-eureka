@@ -1,7 +1,7 @@
 # expert-eureka
-### Check your PHP version
-Make sure you known which version of php you have installed. and that the necessary apache modules are enabled.
-Here are the steps:
+### PHP Apache2 Modules
+Make sure you known which version of php you have installed, and that the necessary apache modules are enabled.
+To check your php version enter `php -v` at the command-line. The output should resimble this:
 ```sh
    you@yourmachine:/$  php -v
    PHP 7.0.6-12+donate.sury.org~xenial+4 (cli) ( NTS )
@@ -10,18 +10,32 @@ Here are the steps:
     with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies
     with Xdebug v2.4.0, Copyright (c) 2002-2016, by Derick Rethans
 ```
-1. php -v
-2. cd /etc/apache2/mods-available
-2. 
+You don't need to have php7.0 installed. What's important is that php is installed and up to date with the base
+requirements issued in the Zend Framework 2 documentation.
 
-
+In order for php to work with apache you need make sure that you have `libapache2-mod-php` installed. Assuming that
+it is installed, check to make sure that the mods are enabled. To do this, enter `cd /etc/apache2/mods-available` and
+enter `ls -l | grep php`. If the mods are available, the output should look like this:
+```sh
+   you@yourmachine:/$ cd /etc/apache2/mods-available
+   you@yourmachine:/etc/apache2/mods-available$ ls -l | grep php
+   -rw-r--r-- 1 root root  867 May 13 05:03 php7.0.conf
+   -rw-r--r-- 1 root root   79 May 13 05:03 php7.0.load
+```
+Endable the module by entering `sudo a2enmod php7.0` (you need to type the appropriate number for your version) and
+restart apache by entering `sudo service apache2 restart`.
 
 ### Apache setup
 
-For Apache >= 2.4 on recent releases of Ubuntu (16.04 in particular), there
-are essentially three steps to setting up a virtual host:
-	
+For Apache >= 2.4 on recent releases of Ubuntu (16.04 in particular), there are essentially three steps to setting up a virtual host:
 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
+2. Edit the `ServerName` and `DocumentRoot` in your newly created `zf2.project.conf`
+3. Edit the `<Directory /var/www/>` directive in /etc/apache2/apache.conf from `AllowOverride None` to `AllowOverride All`.
+4. Enable the Rewrite module `sudo a2enmod rewrite` and `sudo service apache2 restart`.
+5. Edit the file /etc/hosts to include your the address `127.0.0.1` and your`ServerName`.
+6. Enable the virtual host configuration `sudo a2ensite zf2.project.conf` and `sudo service apache2 restart`.
+
+## Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
    Here's the easiest way to do this:
    1. Ctrl + Alt + t (to open up a terminal)
    2. sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/zf2.project.conf
