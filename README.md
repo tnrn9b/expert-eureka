@@ -1,4 +1,20 @@
 # expert-eureka
+### Check your PHP version
+Make sure you known which version of php you have installed. and that the necessary apache modules are enabled.
+Here are the steps:
+```sh
+   you@yourmachine:/$  php -v
+   PHP 7.0.6-12+donate.sury.org~xenial+4 (cli) ( NTS )
+   Copyright (c) 1997-2016 The PHP Group
+   Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
+    with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies
+    with Xdebug v2.4.0, Copyright (c) 2002-2016, by Derick Rethans
+```
+1. php -v
+2. cd /etc/apache2/mods-available
+2. 
+
+
 
 ### Apache setup
 
