@@ -75,17 +75,11 @@ are essentially three steps to setting up a virtual host:
    Here's the easiest way to do this:
    1. sudo nano /etc/hosts
       It should look like this:
+
       ```apache
-      	127.0.0.1       zf2.project.localhost # This goes at the top of the list
+      127.0.0.1       zf2.project.localhost # This goes at the top of the list
 	...
-	# The following lines are desirable for IPv6 capable hosts
+      # The following lines are desirable for IPv6 capable hosts
       ```
 6.  
 
-```apache
-  <Directory /var/www/>
-	    Options Indexes FollowSymLinks
-	    AllowOverride All
-	     Require all granted
-  </Directory>
-```
