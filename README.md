@@ -1,4 +1,4 @@
-# expert-eureka
+# Installing Zend Framework 2 on Ubuntu 16.04 using Apache2.4
 ## PHP Apache2 Modules
 Make sure you known which version of php you have installed, and that the necessary apache modules are enabled.
 To check your php version enter `php -v` at the command-line. The output should resimble this:
@@ -28,7 +28,8 @@ restart apache by entering `sudo service apache2 restart`.
 ## Apache setup
 
 For Apache >= 2.4 on recent releases of Ubuntu (16.04 in particular), there are essentially three steps to setting up a virtual host:
-1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
+
+Item 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
 2. Edit the `ServerName` and `DocumentRoot` in your newly created `zf2.project.conf`
 3. Edit the `<Directory /var/www/>` directive in /etc/apache2/apache.conf from `AllowOverride None` to `AllowOverride All`.
 4. Enable the Rewrite module `sudo a2enmod rewrite` and `sudo service apache2 restart`.
