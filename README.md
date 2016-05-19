@@ -29,7 +29,7 @@ restart apache by entering `sudo service apache2 restart`.
 
 For Apache >= 2.4 on recent releases of Ubuntu (16.04 in particular), there are essentially three steps to setting up a virtual host:
 
-Item 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
+1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
 2. Edit the `ServerName` and `DocumentRoot` in your newly created `zf2.project.conf`
 3. Edit the `<Directory /var/www/>` directive in /etc/apache2/apache.conf from `AllowOverride None` to `AllowOverride All`.
 4. Enable the Rewrite module `sudo a2enmod rewrite` and `sudo service apache2 restart`.
@@ -37,18 +37,14 @@ Item 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
 6. Enable the virtual host configuration `sudo a2ensite zf2.project.conf` and `sudo service apache2 restart`.
 
 ### Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
-   Here's the easiest way to do this:
+
+Here's the easiest way to do this:
    1. Ctrl + Alt + t (to open up a terminal)
    2. sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/zf2.project.conf
-2. Edit the `ServerName` and `DocumentRoot` in your newly created `zf2.project.conf`
-   changing them to: 
-```apache 
-	...
-	ServerName zf2.project.localhost
-	...
-	DocumentRoot /var/www/{NAME_OF_YOUR_ZEND_PROJECT_DIR}/public
-```	
-   Here's the easiest way to do this (using nano as an editor):
+
+### Edit the `ServerName` and `DocumentRoot` in your newly created `zf2.project.conf`
+
+ Here's the easiest way to do this (using nano as an editor):
 	1. sudo nano /etc/apache2/sites-available/zf2.project.conf
 	2. make the changes to the lines described above, removing the '#' from
 	   in front of the `ServerName`.
@@ -85,8 +81,9 @@ Item 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 ```
-3. Edit the `<Directory /var/www/>` directive in /etc/apache2/apache.conf from `AllowOverride None` to `AllowOverride All`.
-   Here's the easiest way to do this:
+### Edit the `<Directory /var/www/>` directive in /etc/apache2/apache.conf from `AllowOverride None` to `AllowOverride All`.
+
+Here's the easiest way to do this:
    1. sudo nano /etc/apache2/apache2.conf
    2. page down until you see `<Directory /var/www/>`
    3. Edit the block so that it looks like this:
@@ -97,11 +94,16 @@ Item 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
 		Require all granted
 	</Directory>
 	```
-4. Enable the Rewrite module: sudo a2enmod rewrite
-5. Edit the file /etc/hosts to include your the address `127.0.0.1` 
-   and your`ServerName`.
+
+### Enable the Rewrite module.
+    
+    Do this by entering `sudo a2enmod rewrite` and `sudo service apache2 restart`.
+    
+### Edit the file /etc/hosts to include your the address `127.0.0.1` and your`ServerName`.
+
    Here's the easiest way to do this:
    1. sudo nano /etc/hosts
+   2. Add `127.0.0.1       zf2.project.localhost` to the top of the file
       It should look like this:
 
       ```apache
@@ -109,5 +111,7 @@ Item 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
 	...
       # The following lines are desirable for IPv6 capable hosts
       ```
-6.  
 
+### Enable the virtual host configuration
+
+    Do this by entering `sudo a2ensite zf2.project.conf` and `sudo service apache2 restart`.
