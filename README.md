@@ -6,12 +6,22 @@ For Apache >= 2.4 on recent releases of Ubuntu (16.04 in particular), there
 are essentially three steps to setting up a virtual host:
 	
 1. Create a .conf file `/etc/apache2/sites-available/zf2.project.conf`.
-	Here's the easiest way to do this:
-        1. Ctrl + Alt + t (to open up a terminal)
-        2. sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/zf2.project.conf
-2. Edit the `ServerName` and `DocumentRoot` your newly created `zf2.project.conf`
-        Here's the easiest way to do this (using nano as an editor):
+   Here's the easiest way to do this:
+   1. Ctrl + Alt + t (to open up a terminal)
+   2. sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/zf2.project.conf
+
+2. Edit the `ServerName` and `DocumentRoot` in your newly created `zf2.project.conf`
+   changing them to: 
+```apache 
+	...
+	Servername zf2.project.localhost
+	...
+	DocumentRoot /var/www/{NAME_OF_YOUR_ZEND_PROJECT_DIR}/public
+```	
+   Here's the easiest way to do this (using nano as an editor):
 	1. sudo nano /etc/apache2/sites-available/zf2.project.conf
+	2. make the changes to the lines described above, removing the '#' from
+	   in front of the `ServerName`.
 	   It should look something like this:
 ```apache
 <VirtualHost *:80>
@@ -22,9 +32,9 @@ are essentially three steps to setting up a virtual host:
         # match this virtual host. For the default virtual host (this file) this
         # value is not decisive as it is used as a last resort host regardless.
         # However, you must set it for any further virtual host explicitly.
-        #ServerName www.example.com
+        ServerName zf2.project.localhost
         ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/
+        DocumentRoot /var/www/{NAME_OF_YOUR_ZEND_PROJECT_DIR}/public
 
         # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
         # error, crit, alert, emerg.
